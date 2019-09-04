@@ -6,6 +6,7 @@ export HOME=/config
 
 USER_ID=$PUID
 GROUP_ID=$PGID
+OLD_FILESIZE=$(stat -c%s "$1")
 
 # Make sure we appear with a proper name under `ps`.
 if [ ! -L "$0" ]; then
@@ -246,7 +247,11 @@ process_video() {
 
     NUM_PROCESSED_FILES="$(expr $NUM_PROCESSED_FILES + 1)"
     videodir="$(dirname "$video")"
-    log "Auto-Comskip finished for '$video'. Any issues check the logs at /config/log/"
+    NEW_FILESIZE=$(stat -c%s "$1")
+    if [ $OLD_FILESIZE -eq $NEW_FILESIZE ]; then
+    log "Comskip finished for '$video' but didn't find commercials. Any issues check the logs at /config/log/"
+    else log "Comskip removed commercials from '$video'. Any issues check the logs at /config/log/"
+    fi
     echo "$video $hash" >> "$SUCCESSFUL_CONVERSIONS"
     mv "$video" /output/
 }
