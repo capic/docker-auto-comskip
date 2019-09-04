@@ -6,7 +6,6 @@ export HOME=/config
 
 USER_ID=$PUID
 GROUP_ID=$PGID
-OLD_FILESIZE=$(stat -c%s "$1")
 
 # Make sure we appear with a proper name under `ps`.
 if [ ! -L "$0" ]; then
@@ -87,7 +86,8 @@ get_video_titles() {
 process_video() {
     video="$1"
     wf="$2"
-
+    OLD_FILESIZE=$(stat -c%s "$1")
+    
     # Skip video if it doesn't exists (may have been removed while processing
     # the watch directory).
     if [ ! -f "$video" ] && [ ! -d "$video" ]; then
