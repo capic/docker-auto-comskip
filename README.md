@@ -28,7 +28,7 @@ Where:
 
 ## Comskip tuning
 
-The included comskip settings for commercial detection works well for general North America television.  If you need commercial detection tuned to work better for your TV service you can find several on the internet or write your own with [this guide](http://www.kaashoek.com/files/tuning.htm).  
+The included comskip settings for commercial detection works well for general North America television.  If you need commercial detection tuned to work better for your TV service you can find several on the internet [including here](http://www.kaashoek.com/comskip/) or write your own with [this guide](http://www.kaashoek.com/files/tuning.htm).  
 
 To add your custom comskip settings:
 
