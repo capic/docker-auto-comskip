@@ -11,7 +11,7 @@ docker run -d \
     -v /home/user/tmp-videos:/watch:rw \
     -v /home/user/videos:/output:rw \
     -v /docker/appdata/auto-comskip:/config:rw \
-    -v /tmp/comskip:/tmp:rw \
+    -v /tmp/comskip:/temp:rw \
     -e PUID=99 \
     -e PGID=100 \
     -e UMASK=000 \
