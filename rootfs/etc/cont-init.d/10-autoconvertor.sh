@@ -18,6 +18,7 @@ fi
 # Make sure mandatory directories exist.
 mkdir -p /config/ghb
 mkdir -p /config/hooks
+mkdir -p /config/log
 
 # Copy default configuration if needed.
 if [ ! -f /config/ghb/preferences.json ]; then
