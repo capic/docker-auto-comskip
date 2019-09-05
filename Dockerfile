@@ -14,6 +14,7 @@ RUN apk --no-cache add python ffmpeg tzdata bash coreutils findutils expect shad
 && sed -i "s#/usr/local/bin/ffmpeg#/usr/bin/ffmpeg#g" /opt/PlexComskip.conf \
 && sed -i "s#~/Library/Logs#/config/log#g" /opt/PlexComskip.conf \
 && sed -i "/forensics/s/True/False/g" /opt/PlexComskip.conf \
+&& sed -i "s;# temp-root: /mnt/fastdisk/tmp;/temp;g" /opt/PlexComskip.conf \
 && wget --no-check-certificate -O s6-overlay.tar.gz https://github.com/just-containers/s6-overlay/releases/download/v1.22.1.0/s6-overlay-amd64.tar.gz \
 && tar xzf s6-overlay.tar.gz -C / \
 && useradd -u 911 -U -d /config -s /bin/false abc \
