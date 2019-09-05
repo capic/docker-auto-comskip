@@ -19,7 +19,7 @@ RUN apk --no-cache add python ffmpeg tzdata bash coreutils findutils expect shad
 && tar xzf s6-overlay.tar.gz -C / \
 && useradd -u 911 -U -d /config -s /bin/false abc \
 && usermod -G users abc \
-&& mkdir /config /output \
+&& mkdir /config /output /temp \
 && apk del builddeps \
 && rm -rf /var/cache/apk/* /tmp/* /tmp/.[!.]*
 
