@@ -101,8 +101,8 @@ process_video() {
         return
     fi
 
-    # Skip if it is not .ts, .mkv, .mp4, .avi, m4v.
-    if [[ ! "$video" =~ ^(.*ts|.*mkv|.*mp4|.*avi|.*m4v)$ ]]; then
+    # Skip if it is not .ts, .mkv, .mp4, .avi, .m4v, .mpg.
+    if [[ ! "$video" =~ ^(.*ts|.*mkv|.*mp4|.*avi|.*m4v|.*mpg)$ ]]; then
         return
     fi
 
