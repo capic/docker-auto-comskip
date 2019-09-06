@@ -1,6 +1,10 @@
 FROM arm32v7/alpine
 
 COPY --from=balenalib/raspberrypi3-alpine /usr/bin/qemu-arm-static /usr/bin/qemu-arm-static
+COPY --from=balenalib/raspberrypi3-alpine /usr/bin/cross-build-start /usr/bin/cross-build-start
+COPY --from=balenalib/raspberrypi3-alpine /usr/bin/cross-build-end /usr/bin/cross-build-end
+
+RUN [ "cross-build-start" ]
 
 WORKDIR /tmp
 
@@ -36,3 +40,5 @@ ENV PUID=99 \
     AUTOMATED_CONVERSION_FORMAT="mp4"
 
 ENTRYPOINT ["/init"]
+
+RUN [ "cross-build-end" ]
