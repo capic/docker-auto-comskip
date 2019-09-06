@@ -2,8 +2,10 @@ FROM arm32v7/alpine
 
 COPY --from=balenalib/raspberrypi3-alpine /usr/bin/qemu-arm-static /usr/bin/qemu-arm-static
 COPY --from=balenalib/raspberrypi3-alpine /usr/bin/resin-xbuild /usr/bin/resin-xbuild
+COPY --from=balenalib/raspberrypi3-alpine /usr/bin/cross-build-start /usr/bin/cross-build-start
+COPY --from=balenalib/raspberrypi3-alpine /usr/bin/cross-build-end /usr/bin/cross-build-end
 
-RUN [ "resin-xbuild" ]
+RUN [ "cross-build-start" ]
 
 WORKDIR /tmp
 
@@ -40,4 +42,4 @@ ENV PUID=99 \
 
 ENTRYPOINT ["/init"]
 
-RUN [ "resin-xbuild" ]
+RUN [ "cross-build-end" ] 
