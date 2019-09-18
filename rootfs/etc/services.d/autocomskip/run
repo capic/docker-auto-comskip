@@ -253,7 +253,13 @@ process_video() {
     else log "Comskip removed commercials from '$video'. Any issues check the logs at /config/log/"
     fi
     echo "$video $hash" >> "$SUCCESSFUL_CONVERSIONS"
-    mv "$video" /output/
+    OUT_FILE_DIR=/output/"$(echo "$(dirname "$video")" | sed 's|/watch/|/|g')"
+    if [ "$OUT_FILE_DIR" = "/output/." ] ; then
+    mv "$video" /output
+    else
+    mkdir -p "$OUT_FILE_DIR"
+    mv "$video" "$OUT_FILE_DIR"/"$(basename "$video")"
+    fi
 }
 
 process_watch_folder() {
