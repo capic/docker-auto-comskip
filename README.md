@@ -12,6 +12,7 @@ docker run -d \
     -v /home/user/videos:/output:rw \
     -v /docker/appdata/auto-comskip:/config:rw \
     -v /tmp/comskip:/temp:rw \
+    -e TZ=America/New_York \
     -e PUID=99 \
     -e PGID=100 \
     -e UMASK=000 \
@@ -24,6 +25,7 @@ Where:
 - `/home/user/tmp-videos`: This location contains video files that need commercial removal.  
 - `/home/user/videos`: The videos that has finished comskip processing will be placed here.  
 - `/tmp/comskip`: A temp directory for interstitial files. This should be local, fast, and have enough free space for ~2x your largest video.
+- `TZ`: Your timezone
 - `PUID`: ID of the user the application runs as.
 - `PGID`: ID of the group the application runs as.
 - `UMASK`: Mask that controls how file permissions are set for newly created files.
